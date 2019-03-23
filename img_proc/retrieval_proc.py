@@ -11,12 +11,17 @@ model_epoch = 25 # 何エポックのモデルを利用するか
 con_embNet = load_model('./model/T_Shirt/krasser/con_emb_e{}.h5'.format(model_epoch))
 shop_embNet = load_model('./model/T_Shirt/krasser/shop_emb_e{}.h5'.format(model_epoch))
 
+# [[id, 画像, 埋め込みベクトル],[id, 画像, 埋め込みベクトル], ...]の検索対象データを予め読み込んでおく
+# pickleにして保存しておいて読み込む
+
+
+
+# 以下の関数はinfer.pyからの呼び出しで実行される
+
 # sample data
 def query():
     PATH = './image.png'
     return np.array(Image.open(PATH).resize((128,128)).convert('RGB'))/255.
-# [[id, 画像],[id, 画像], ...]の検索対象データを用意
-
 
 # 近傍探索用
 def distance(emb1,emb2):

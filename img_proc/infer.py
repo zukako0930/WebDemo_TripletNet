@@ -9,6 +9,8 @@ from io import BytesIO
 
 api = Flask(__name__)
 
+# predictのエンドポイントのアクセスで呼ばれる関数
+# curl -F "file=@a.png"  http://0.0.0.0:3001/predict
 @api.route("/predict", methods=['POST'])
 def predict():
     print(request.files['file'].stream)
@@ -16,13 +18,10 @@ def predict():
     arr = (Image.open(BytesIO(stream.read())))
     print(arr.mode)
     img = np.asarray(arr.resize((128,128)).convert("RGB"))
-    # img_array = np.asarray(bytearray(stream.read()), dtype=np.uint8)
-    # img = cv2.imdecode(img_array, 1)
-    # img = cv2.cvtColor(img, cv2.COLOR_BGR2LAB)
-    # img = cv2.bitwise_not(img)
-    # cv2.imwrite('image.png',img)
-    result = retrieval_proc.con_embedding(img)
-    print(result)
+    # 入力画像をベクトル化
+    query_img = retrieval_proc.con_embedding(img)
+    # ランキングを算出して結果を表示
+    print(query_img)
 
     return make_response(jsonify({"status":"success"}))
 
