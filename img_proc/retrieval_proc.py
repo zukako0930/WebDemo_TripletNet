@@ -13,8 +13,10 @@ shop_embNet = load_model('./model/T_Shirt/krasser/shop_emb_e{}.h5'.format(model_
 
 # [[id, 画像, 埋め込みベクトル],[id, 画像, 埋め込みベクトル], ...]の検索対象データを予め読み込んでおく
 # pickleにして保存しておいて読み込む
-
-
+import pickle 
+with open('gallery.pickle', 'rb') as g:
+  gallery = pickle.load(g)
+  print(gallery[0])
 
 # 以下の関数はinfer.pyからの呼び出しで実行される
 
