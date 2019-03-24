@@ -25,20 +25,33 @@ def query():
     PATH = './image.png'
     return np.array(Image.open(PATH).resize((128,128)).convert('RGB'))/255.
 
+# idsをもとにshop画像をベクトル化する/idsは数字のみを想定
+# 全てのidの場合はids = os.listdir(PATH)
+def get_shopimgs(ids,BASE_PATH):
+    shop_img_list=[]
+    for id_ in ids:
+        file_paths = sorted([BASE_PATH+id_+'/'+x for x in os.listdir(BASE_PATH+id_)])
+        shop_paths = sorted([x for x in file_paths if 'shop' in x ])
+        for shop_path in shop_paths:
+            img = np.array(Image.open(shop_path).resize((128,128)).convert('RGB'))/255.
+            emb = shop_embNet.predict(np.expand_dims(img.astype(np.float32),axis=0))[0]
+            shop_img_list.append([id_[:],shop_path,emb])
+    return shop_img_list
+
 # 近傍探索用
 def distance(emb1,emb2):
     return np.sum(np.square(emb1-emb2))
 
-# 画像データの埋め込み
+# ユーザが入力した画像データの埋め込み
 def con_embedding(img):
     # plt.imshow(img)
     print(img.shape)
     img = img/255. # curlで送られてきた画像を0~1に収める。
     # plt.imshow(img) # 勝手にimshowが0~255に正規化する
     # plt.show()
-    return shop_embNet.predict(np.expand_dims(img,axis=0))[0] # need [0] because of expanding dimension -> [[]]
+    return con_embNet.predict(np.expand_dims(img,axis=0))[0] # need [0] because of expanding dimension -> [[]]
 
-# print(con_embedding(img))
+# ユーザの入力画像に対してランキングを計算
 def calc_ranking(query_img_emb,gallery):
     print(type(gallery))
     N = 50

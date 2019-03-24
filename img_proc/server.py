@@ -1,5 +1,5 @@
 # Flaskに必要なモジュールの読み込み
-from flask import Flask, jsonify, abort, make_response,request
+from flask import Flask, jsonify, abort, make_response,request,render_template
 import cv2
 from PIL import Image
 import numpy as np
@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import retrieval_proc
 
 # apiの宣言
-api = Flask(__name__)
+api = Flask(__name__, template_folder='.')
 
 # [[id, 画像, 埋め込みベクトル],[id, 画像, 埋め込みベクトル], ...]の検索対象データを予め読み込んでおく
 # pickleにして保存しておいて読み込む
@@ -21,6 +21,9 @@ with open('gallery.pickle', 'rb') as g:
   gallery = pickle.load(g)
   print(gallery[0])
 
+@api.route('/')
+def index():
+  return render_template('./index.html')
 
 # predictのエンドポイントのアクセスで呼ばれる関数
 # curl -F "file=@a.png"  http://0.0.0.0:3001/predict
