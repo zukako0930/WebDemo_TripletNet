@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<title>Clothes Search Engine by Triplet Loss</title>   
+<title>Clothes Search Engine by Triplet Loss</title>
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script src="./js/root_script.js"></script>
+
 </head>
 <h1>ここに結果を表示する予定です。</h1>
-<form action="#">
+<form action="#" class="form">
     <!-- inputタグでuploadされたファイルを保持 -->
     <input type="file" id="upload_file" name="">
     <!-- このボタンのonclickでファイルをPOSTでserver.pyのpredictに渡す -->
-    <button type="submit" id="select_file_button">検索</button>
+    <button type="submit" id="retrieval_button">検索</button>
 </form>
 <footer>©︎Zukako's Research</footer>
-<script>
-
-</script>
+<script>console.log(location.pathname);</script>
 </html>

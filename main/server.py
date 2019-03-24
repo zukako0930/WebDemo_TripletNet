@@ -23,13 +23,15 @@ with open('gallery.pickle', 'rb') as g:
 
 @api.route('/')
 def index():
-  return render_template('./index.html')
+  return render_template('./public/index.html')
 
 # predictのエンドポイントのアクセスで呼ばれる関数
 # curl -F "file=@a.png"  http://0.0.0.0:3001/predict
 @api.route("/predict", methods=['POST'])
 def predict():
     print(request.files['file'].stream)
+    # print(request.form['file'].stream)
+
     stream = request.files['file'].stream
     arr = (Image.open(BytesIO(stream.read())))
     print(arr.mode)
