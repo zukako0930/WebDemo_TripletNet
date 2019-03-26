@@ -1,5 +1,6 @@
 # flask
 - api宣言時、引数の'static_folder'で指定しないと'render_template()'先のhtmlから外部jsを参照できない
+- './static' './template' にすればflaskが勝手に読んでくれる説はある
 - render_template()の引数にlist等のパラメータを渡すことが可能
 - html上でpythonのコードを書く場合'jinja'を利用する
 
