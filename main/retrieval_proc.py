@@ -65,4 +65,10 @@ def calc_ranking(query_img_emb,gallery):
     np_gallery = np.array(gallery)
     ranking = list(np_gallery[idxs[:N]]) #類似度の高い順にランキングしたインデックスでgalleryを切り出す
     # topN_id_list.append(gallery[idxs[:N]]) # append ids
-    return ranking
+    rank_list=[]
+    for r in ranking:
+        my_dic = {}
+        my_dic['image_path'] = './public'+ r[1][1:]
+        my_dic['image_id'] = r[0]
+        rank_list.append(my_dic)
+    return rank_list
