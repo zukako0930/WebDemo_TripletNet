@@ -20,3 +20,19 @@ $(document).ready(function(){
         });
     });
 });
+
+$(function() {
+    $('input[id=upload]').change(function() {// upするinputのID
+        var file = $(this).prop('files')[0];
+        if (! file.type.match('image.*')) {
+            $(this).val('');
+            $('#img1').html('');
+            return;
+        }
+        var reader = new FileReader();
+        reader.onload = function() {
+            $('#img1').attr('src',reader.result);
+        }
+        reader.readAsDataURL(file);
+    });
+});

@@ -1,56 +1,20 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <title>Clothes Search Engine by Triplet Loss</title>
 <!-- jQuery -->
-<script
-  src="http://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
 <script src="./public/js/jquery-3.3.1.min.js"></script>
-<script src="./public/js/root_script.js"></script>
-
+<script src="./public/js/my_script.js"></script>
 </head>
-<h1>ここに結果を表示する予定です。</h1>
-<form action="/predict" class="form">
-    <!-- inputタグでuploadされたファイルを保持 -->
-    <input type="file" id="upload_file" name="file">
-    <!-- このボタンのonclickでファイルをPOSTでserver.pyのpredictに渡す -->
-    <button type="button" id="retrieval_button">検索</button>
-</form>
 
+<h3>ここに結果を表示する予定です。</h3>
 <form action="/predict" method="post" enctype="multipart/form-data">
-    <input type="file" name="file" accept="image/png, image/jpeg, image/jpg">
+    <input type="file" name="file" accept="image/png, image/jpeg, image/jpg" id="upload">
     <button type="submit">submit</button>
-  </form>
+</form>
+<img id="img1" style="width:300px;height:300px; background-size: cover; object-fit: cover;" />
   
 <footer>©︎Zukako's Research</footer>
-
-<script>console.log(location.pathname);</script>
-
-<script>
-// $(document).ready(function(){
-//     $('#retrieval_button').on('click',function(){
-//         console.log('func');
-//         var formdata = new FormData($(this).get(0));
-//         console.log(formdata);
-//         $.ajax({
-//             url  : "http://0.0.0.0:3001/predict",
-//             type : "POST",
-//             data : formdata,
-//             cache       : false,
-//             contentType : false,
-//             processData : false,
-//             // dataType    : "html"
-//         })
-//         .done(function(data, textStatus, jqXHR){
-//             alert(data);
-//         })
-//         .fail(function(jqXHR, textStatus, errorThrown){
-//             alert("fail");
-//         });
-//     });
-// });
-</script>
-
 </html>

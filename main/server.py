@@ -42,7 +42,7 @@ def predict():
     # ランキングを算出して結果を表示
     rank_list = retrieval_proc.calc_ranking(query_img_emb,gallery)
     # rank_listに変数を代入してresult.htmlにパラメータとして渡す
-    return render_template('./public/result.html',rank_list=rank_list)
+    return render_template('./public/result.html',rank_list=rank_list, stream = stream)
     # return make_response(jsonify({"status":"success"}))
 
 if __name__ == '__main__':

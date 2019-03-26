@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<style>
+.result_img{
+    height: 100px;
+    width: auto;
+}
+</style>
 </head>
 <body>
 <form action="/predict" method="post" enctype="multipart/form-data">
@@ -10,8 +18,9 @@
 <div class="container">
     <div class="header">
         <h3 class="text-muted">Sample Page</h3>
+        
         {% for item in rank_list[:5] %}
-            <a href={{item.image_path}} class="thumbnail"><img src={{item.image_path}}></a>
+            <a href={{item.image_path}} class="thumbnail"><img src={{item.image_path}} class="result_img"></a>
         {% endfor %}
     </div>
 </div>
