@@ -1,2 +1,4 @@
 *.zip
 dataset/
+.mov
+.m4v

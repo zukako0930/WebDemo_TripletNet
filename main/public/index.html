@@ -1,34 +1,40 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<style>
-.col-md-4{
-    position: relative;
-    min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
-   }
-</style>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <title>Clothes Search Engine by Triplet Loss</title>
 <!-- jQuery -->
 <script src="./public/js/jquery-3.3.1.min.js"></script>
 <script src="./public/js/my_script.js"></script>
+<link rel="stylesheet" href="./public/css/main.css">
+<link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
+
 </head>
+
 <body>
-<nav class="navbar navbar-dark bg-dark">
-    ©︎Zukako Research Engine
+<header>
+<nav class="navbar" style="position:fixed;">
+    ︎Zukako Research Engine
 </nav>
-<div class="container col-md-2"></div>
-<div class="container col-md-8">
-<form action="/predict" method="post" enctype="multipart/form-data">
-    <input type="file" name="file" accept="image/png, image/jpeg, image/jpg" id="upload">
-    <button type="submit">検索</button>
-</form>
-<img id="img1" style="width:300px;height:300px; background-size: cover; object-fit: cover; padding: 5%" />
+</header>
+<div class="video-wrap" style="width:100%;">
+    <video muted src="./public/images/opening-comp.mov" autoplay loop></video>
 </div>
-<div class="container col-md-2"></div>
+<div class="search_form">
+    <div class="container" style="background:blueviolet;">
+         <h3>衣服画像を入力してください</h3>
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/png, image/jpeg, image/jpg" id="upload">
+            <button type="submit">検索</button>
+        </form>
+        <img id="img1" class="retrieval"/>
+    </div>
+</div>
 </body>
-<footer>©︎Zukako's Research</footer>
+<footer class="corp">
+    これは一人の大学生ヅカコの物語である。
+    <hr>
+    ©︎Zukako's Research
+</footer>
 </html>

@@ -5,34 +5,35 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="./public/js/jquery-3.3.1.min.js"></script>
 <script src="./public/js/my_script.js"></script>
+<link rel="stylesheet" href="./public/css/main.css">
 <style>
-.result_img{
+img.result_img{
     height: 200px;
     width: auto;
 }
-.result_img :hover{
-    color: aquamarine;
-}
 </style>
 </head>
+
 <body>
 
-<div class="alert alert-primary" role="alert">
-    A simple primary alert—check it out!
-</div>
+<nav class="navbar">
+    ︎Zukako Research Engine
+</nav>
 
-<div class="container">
+<div class="container back-color">
     <div class="header">
-        <h3 class="text-muted">検索結果</h3>        
-        {% for item in rank_list[:5] %}
-            <a href={{item.image_path}} class="thumbnail"><img src={{item.image_path}} class="result_img"></a>
+        <h3>検索結果</h3>        
+        {% for item in rank_list[:20] %}
+            <a href={{item.image_path}} class="thumbnail">
+                <img src={{item.image_path}} class="result_img">
+            </a>
         {% endfor %}
     </div>
     <div class="container">
     <div class="input-group">
         <form action="/predict" method="post" enctype="multipart/form-data" class="form-inline">
             <input type="file" name="file" accept="image/png, image/jpeg, image/jpg" id="upload">
-            <button type="submit" class="btn btn-dark">検索</button>
+            <button type="submit">もう一度検索</button>
         </form>
     </div>
     </div>
