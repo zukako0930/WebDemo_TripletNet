@@ -1,34 +1,50 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+<title>Clothes Search Engine by Triplet Loss</title>
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<title>Clothes Search Engine by Triplet Loss</title>
 <!-- jQuery -->
 <script src="./public/js/jquery-3.3.1.min.js"></script>
 <script src="./public/js/my_script.js"></script>
+
 <link rel="stylesheet" href="./public/css/main.css">
 <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP" rel="stylesheet">
 </head>
 
 <body>
 <header>
-<nav class="navbar" style="position:fixed;">
-    ︎Zukako Research Engine
+<nav class="navbar">
+    <a class="navbar-brand" href="#">ヅカコという高度に抽象化された概念が、そこには横たわっていた。</a>    
 </nav>
 </header>
+<div class="content">
 <div class="video-wrap" style="width:100%;">
     <video muted src="./public/images/opening-comp.mov" autoplay loop></video>
 </div>
+<div class="explanation">
+    <h4 style="font-family:'Shadows Into Light', cursive;">About Me</h4>
+    <hr class="hr-black" style="width:100%">
+    ヅカコとは一体何だろうか？<br>
+    ディープラーニングって難しいのね。<br>
+    好きなものは桜餅。
+</div>
+</div>
 <div class="search_form">
-    <div class="container" style="background:blueviolet;">
-         <h3>衣服画像を入力してください</h3>
-        <form action="/predict" method="post" enctype="multipart/form-data">
-            <input type="file" name="file" accept="image/png, image/jpeg, image/jpg" id="upload">
-            <button type="submit">検索</button>
-        </form>
+    <div class="container">
+        <h3 class="center">衣服画像を入力してください</h3>
+        <hr class="hr-black">
+        <div class="center">
+        <label for="upload">画像をアップロード</label><br>
         <img id="img1" class="retrieval"/>
+        </div>
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/png, image/jpeg, image/jpg" id="upload" style="display:none;">
+            <button type="submit" class="round-button" style="display:block; margin:0 auto;">検索</button>
+        </form>
     </div>
 </div>
 </body>

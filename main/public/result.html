@@ -6,6 +6,8 @@
 <script src="./public/js/jquery-3.3.1.min.js"></script>
 <script src="./public/js/my_script.js"></script>
 <link rel="stylesheet" href="./public/css/main.css">
+<link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP" rel="stylesheet">
 <style>
 img.result_img{
     height: 200px;
@@ -17,29 +19,38 @@ img.result_img{
 <body>
 
 <nav class="navbar">
-    ︎Zukako Research Engine
+    <a class="navbar-brand" href="/">Where to buy it</a>
 </nav>
-
-<div class="container back-color">
-    <div class="header">
-        <h3>検索結果</h3>        
+<h3 style="text-align:center;">検索結果</h3>
+<hr class="hr-black">  
+<div class="container" style="background:white;">
+    <div class="header">      
         {% for item in rank_list[:20] %}
             <a href={{item.image_path}} class="thumbnail">
                 <img src={{item.image_path}} class="result_img">
             </a>
         {% endfor %}
     </div>
+</div>
+<hr class="hr-black">
+<div class="search_form" style="background:white;">
     <div class="container">
-    <div class="input-group">
-        <form action="/predict" method="post" enctype="multipart/form-data" class="form-inline">
-            <input type="file" name="file" accept="image/png, image/jpeg, image/jpg" id="upload">
-            <button type="submit">もう一度検索</button>
+        <h3 class="center">衣服画像を入力してください</h3>
+        <hr class="hr-black">
+        <div class="center">
+        <label for="upload">画像をアップロード</label><br>
+        <img id="img1" class="retrieval"/>
+        </div>
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/png, image/jpeg, image/jpg" id="upload" style="display:none;">
+            <button type="submit" class="round-button" style="display:block; margin:0 auto;">検索</button>
         </form>
     </div>
-    </div>
-    <img id="img1" style="width:300px;height:300px; background-size: cover; object-fit: cover;" />
-
 </div>
-
 </body>
+<footer class="corp">
+    これは一人の大学生ヅカコの物語である。
+    <hr>
+    ©︎Zukako's Research
+</footer>
 </html>
