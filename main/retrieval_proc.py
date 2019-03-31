@@ -34,6 +34,7 @@ def get_shopimgs(ids,BASE_PATH):
         shop_paths = sorted([x for x in file_paths if 'shop' in x ])
         for shop_path in shop_paths:
             img = np.array(Image.open(shop_path).resize((128,128)).convert('RGB'))/255.
+            # conにする？
             emb = shop_embNet.predict(np.expand_dims(img.astype(np.float32),axis=0))[0]
             shop_img_list.append([id_[:],shop_path,emb])
     return shop_img_list
@@ -49,7 +50,8 @@ def con_embedding(img):
     img = img/255. # curlで送られてきた画像を0~1に収める。
     # plt.imshow(img) # 勝手にimshowが0~255に正規化する
     # plt.show()
-    return con_embNet.predict(np.expand_dims(img,axis=0))[0] # need [0] because of expanding dimension -> [[]]
+    #shopでもやる
+    return shop_embNet.predict(np.expand_dims(img,axis=0))[0] # need [0] because of expanding dimension -> [[]]
 
 # ユーザの入力画像に対してランキングを計算
 def calc_ranking(query_img_emb,gallery):

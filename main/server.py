@@ -46,4 +46,5 @@ def predict():
     # return make_response(jsonify({"status":"success"}))
 
 if __name__ == '__main__':
+  # 実行時のアドレスとportを指定
     api.run(host='0.0.0.0', port=3001)
