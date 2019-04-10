@@ -62,6 +62,7 @@ def calc_ranking(query_img_emb,gallery):
     for i,g in tqdm(enumerate(gallery)):
         similarities[i] = distance(query_img_emb,g[2]) # retrieve from all the images
     idxs = similarities.argsort() # ascending order/ argsort() returns indexes
+    print(type(idxs))
     print(idxs[:10])
     print(type(np.array(gallery)))
     np_gallery = np.array(gallery)
